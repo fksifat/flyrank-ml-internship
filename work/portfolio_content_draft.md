@@ -1,7 +1,4 @@
 # Portfolio Content Draft & Case Study
-
-*This is a draft for your Week 2 portfolio content. Since we skipped the interview step, I have pre-filled this based on the actual work you are doing in the FlyRank ML Internship (Refresh Scoring). **You must read this out loud and edit it hard so it sounds like you!***
-
 ---
 
 ## 1. The Voice Card
