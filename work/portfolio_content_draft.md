@@ -5,7 +5,6 @@
 ---
 
 ## 1. The Voice Card
-*(Add this to your Claude Project instructions so it stops sounding like a robot)*
 **"Direct, plainspoken, evidence-backed, no buzzwords."**
 
 ---
