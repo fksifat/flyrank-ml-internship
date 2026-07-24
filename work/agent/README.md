@@ -9,6 +9,7 @@ Generate a short, evidence-based weekly update from real repository artifacts.
 ## Live tool/data connection
 
 The agent uses:
+
 - live Git history (`git log --name-only --since=...`) to discover recent work
 - real project files (`outputs/*.json`, `work/*.md`, `docs/*.html`) for evidence
 
@@ -48,6 +49,7 @@ This file is the run evidence for submission.
 ## Raw capture (assignment requirement)
 
 Record one unedited ~2 minute run while you:
+
 1. run the command,
 2. open the generated file,
 3. read the draft and evidence list,

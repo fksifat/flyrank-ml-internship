@@ -91,7 +91,9 @@ def build_evidence(days: int, max_files: int) -> dict[str, Any]:
         if rf:
             top_metrics["rf_precision_at_50"] = rf.get("precision_at_50")
         if base:
-            top_metrics["baseline_precision_at_50"] = base.get("baseline_precision_at_50")
+            top_metrics["baseline_precision_at_50"] = base.get(
+                "baseline_precision_at_50"
+            )
         if "split_strategy" in results:
             top_metrics["split_strategy"] = results.get("split_strategy")
 
@@ -221,20 +223,17 @@ def call_openai(prompt: str, model: str) -> str:
     if missing:
         raise RuntimeError(f"OpenAI JSON missing keys: {', '.join(missing)}")
 
-    bullets = textwrap.dedent(
-        f"""
+    bullets = textwrap.dedent(f"""
         - What shipped: {parsed['shipped']}
         - What I learned: {parsed['learned']}
         - Next step: {parsed['next_step']}
-        """
-    ).strip()
+        """).strip()
 
     return f"{parsed['draft']}\n\n{bullets}"
 
 
 def compose_prompt(evidence: dict[str, Any], audience: str) -> str:
-    return textwrap.dedent(
-        f"""
+    return textwrap.dedent(f"""
         Audience: {audience}
         Task: Write a 120-180 word weekly update in 4 sentences.
         Evidence JSON:
@@ -246,8 +245,7 @@ def compose_prompt(evidence: dict[str, Any], audience: str) -> str:
         3) Sentence 3: what I learned.
         4) Sentence 4: what I will do next.
         5) Then provide three bullets: What shipped, What I learned, Next step.
-        """
-    ).strip()
+        """).strip()
 
 
 def format_output(
@@ -261,8 +259,7 @@ def format_output(
     basis = "\n".join(f"- {f}" for f in files) if files else "- No recent files found"
     metrics = json.dumps(evidence.get("top_metrics", {}), indent=2)
 
-    return textwrap.dedent(
-        f"""
+    return textwrap.dedent(f"""
 # Portfolio Update Concierge Run
 
 - Run ID: {run_id}
@@ -283,8 +280,7 @@ def format_output(
 ```json
 {metrics}
 ```
-"""
-    ).strip() + "\n"
+""").strip() + "\n"
 
 
 def save_run(content: str, run_id: str) -> pathlib.Path:
@@ -296,7 +292,9 @@ def save_run(content: str, run_id: str) -> pathlib.Path:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Portfolio Update Concierge MVP")
-    parser.add_argument("--audience", choices=["portfolio", "linkedin", "meeting"], default="portfolio")
+    parser.add_argument(
+        "--audience", choices=["portfolio", "linkedin", "meeting"], default="portfolio"
+    )
     parser.add_argument("--days", type=int, default=14)
     parser.add_argument("--max-files", type=int, default=12)
     parser.add_argument("--prefer-openai", action="store_true")
@@ -318,9 +316,13 @@ def main() -> int:
         draft = simple_draft(evidence=evidence, audience=args.audience)
 
     if args.audience == "linkedin":
-        next_step_bullet = "Convert this into a publishable LinkedIn post with direct evidence links."
+        next_step_bullet = (
+            "Convert this into a publishable LinkedIn post with direct evidence links."
+        )
     elif args.audience == "meeting":
-        next_step_bullet = "Align owners and checklist items for the next iteration review."
+        next_step_bullet = (
+            "Align owners and checklist items for the next iteration review."
+        )
     else:
         next_step_bullet = "Polish the portfolio narrative and add one verified external feedback note."
 
@@ -331,7 +333,9 @@ def main() -> int:
         draft += f"- Next step: {next_step_bullet}"
 
     run_id = dt.datetime.now().strftime("%Y%m%d_%H%M%S_%f") + f"_{args.audience}"
-    content = format_output(evidence=evidence, draft=draft, audience=args.audience, mode=mode, run_id=run_id)
+    content = format_output(
+        evidence=evidence, draft=draft, audience=args.audience, mode=mode, run_id=run_id
+    )
     out_path = save_run(content=content, run_id=run_id)
 
     print(f"Agent run complete: {out_path.relative_to(ROOT)}")
