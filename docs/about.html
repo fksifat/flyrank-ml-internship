@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="week-05.html">
+          <img class="brand-mark" src="assets/identity_mark.svg" alt="Portfolio mark" />
+          <span class="brand-text">
+            <span class="brand-kicker">About</span>
+            <span class="brand-title">How this portfolio is built</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="week-05.html">Home</a>
+          <a href="case-refresh.html">Refresh case</a>
+          <a href="case-workflow.html">Workflow case</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Plain answer</p>
+          <h1>Static HTML, shared CSS, relative paths, GitHub Pages.</h1>
+          <p class="lede">
+            There is no framework here. The portfolio is a small static site served from the repo’s <code>docs/</code> folder, with each page linked by hand so every page is obvious and inspectable.
+          </p>
+        </div>
+        <div class="hero-art">
+          <img src="assets/identity_mark.svg" alt="Portfolio mark" />
+        </div>
+      </section>
+
+      <section class="section panel">
+        <h2>Stack</h2>
+        <div class="grid three">
+          <article class="card">
+            <div class="meta">Markup</div>
+            <p>HTML pages in <code>docs/</code> for the site structure and content.</p>
+          </article>
+          <article class="card">
+            <div class="meta">Style</div>
+            <p>One shared CSS file with responsive layout rules and a warm visual palette.</p>
+          </article>
+          <article class="card">
+            <div class="meta">Hosting</div>
+            <p>GitHub Pages serves the repository directly, so the public URL stays tied to the repo.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section panel">
+        <h2>What I can explain</h2>
+        <ul class="bullets">
+          <li>Why the pages are separate: every case opens on its own URL and is reachable from the nav.</li>
+          <li>Why the assets are local: SVGs render cleanly, stay light, and work with relative paths.</li>
+          <li>Why the tone is plain: the goal is to show the work, not hide it behind fancy polish.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

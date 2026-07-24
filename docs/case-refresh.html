@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refresh Case Study</title>
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="week-05.html">
+          <img class="brand-mark" src="assets/identity_mark.svg" alt="Portfolio mark" />
+          <span class="brand-text">
+            <span class="brand-kicker">Case study</span>
+            <span class="brand-title">Refresh Opportunity Scorer</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="week-05.html">Home</a>
+          <a href="case-refresh.html">Refresh case</a>
+          <a href="case-workflow.html">Workflow case</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Main model case</p>
+          <h1>Compare against the baseline on the same split.</h1>
+          <p class="lede">
+            This is the ML-08 model lane: a client-holdout random forest, evaluated against the Week-4 rule baseline using Precision@50 and the same held-out clients.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="week-05.html">Back to home</a>
+            <a class="button secondary" href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="assets/top_feature_importance.svg" alt="Feature importance preview" />
+        </div>
+      </section>
+
+      <section class="section panel">
+        <h2>What I built</h2>
+        <div class="grid two">
+          <article class="card">
+            <div class="meta">Method</div>
+            <p>Logistic regression for a readable anchor, a decision tree for a simple nonlinear check, and a random forest as the strongest candidate.</p>
+          </article>
+          <article class="card">
+            <div class="meta">Split</div>
+            <p>Client-holdout split with 26 training clients and 6 held-out clients. That keeps client patterns from leaking across the validation boundary.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section panel">
+        <h2>Model vs baseline</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>ROC AUC</th>
+                <th>Avg precision</th>
+                <th>Precision@50</th>
+                <th>Recall</th>
+                <th>F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Random forest</td><td>0.750</td><td>0.618</td><td>0.740</td><td>0.744</td><td>0.640</td></tr>
+              <tr><td>Decision tree</td><td>0.742</td><td>0.575</td><td>0.660</td><td>0.716</td><td>0.634</td></tr>
+              <tr><td>Logistic regression</td><td>0.700</td><td>0.522</td><td>0.400</td><td>0.567</td><td>0.566</td></tr>
+              <tr><td>Baseline rules</td><td>0.627</td><td>0.468</td><td>0.240</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section panel">
+        <h2>How to read the errors</h2>
+        <div class="grid two">
+          <article class="card">
+            <div class="meta">False positives</div>
+            <p>The model can overcall decline on visible pages that are still healthy enough to hold up, especially when the position and age signals look stale but the content is not actually slipping.</p>
+          </article>
+          <article class="card">
+            <div class="meta">False negatives</div>
+            <p>It misses some low-visibility pages with very little behavioral signal. That is a useful boundary: the model is stronger when there is enough history to read.</p>
+          </article>
+        </div>
+        <div class="figure-grid" style="margin-top: 18px;">
+          <figure class="figure">
+            <img src="assets/trend_distribution.svg" alt="Trend distribution chart" />
+            <figcaption>The label balance is a reason to keep the ranking metric front and center.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/top_feature_importance.svg" alt="Top features chart" />
+            <figcaption>The top signals are sensible enough to explain, which matters more than raw complexity.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
