@@ -3,74 +3,386 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=week-05.html" />
-    <title>FlyRank Portfolio</title>
-    <link rel="stylesheet" href="assets/site.css" />
-  </head>
-  <body>
-    <main class="site-shell">
-      <section class="hero">
-        <div>
-          <p class="eyebrow">Public portfolio</p>
-          <h1>Open the live portfolio.</h1>
-          <p class="lede">
-            This site is built as plain HTML in the repo’s
-            <code>docs/</code> folder and served by GitHub Pages. The full
-            portfolio lives on the Week 5 page.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="week-05.html"
-              >Go to the portfolio</a
-            >
-            <a class="button secondary" href="case-refresh.html"
-              >Open the main case</a
-            >
-          </div>
-        </div>
-        <div class="hero-art">
-          <img src="assets/identity_mark.svg" alt="Portfolio mark" />
-        </div>
-      </section>
-    </main>
-  </body>
-</html>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Empty but Live</title>
+    <title>Refresh Opportunity Modeling for Content Refresh</title>
     <style>
       :root {
         color-scheme: light;
+        --bg: #f5f2ea;
+        --panel: #fffdf9;
+        --text: #17212b;
+        --muted: #51606f;
+        --accent: #123b4b;
+        --accent-2: #d67f45;
+        --line: rgba(23, 33, 43, 0.12);
       }
       body {
         margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f7f7f7;
-        color: #1f2937;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #f8f4eb 0%, var(--bg) 100%);
+        line-height: 1.65;
       }
-      .card {
-        text-align: center;
-        padding: 2rem;
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 20px 64px;
+      }
+      .hero,
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 50px rgba(23, 33, 43, 0.08);
+      }
+      .hero {
+        padding: 32px;
+        margin-bottom: 24px;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.15;
+        margin-top: 0;
       }
       h1 {
-        margin: 0 0 0.5rem;
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(2rem, 3.5vw, 3rem);
       }
-      p {
-        margin: 0;
-        color: #4b5563;
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 1.25em;
+      }
+      p,
+      li {
+        color: var(--muted);
+      }
+      .meta {
+        color: var(--accent-2);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .panel {
+        padding: 24px 28px;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0 20px;
+        font-size: 0.95rem;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+      }
+      th {
+        background: rgba(18, 59, 75, 0.06);
+      }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        margin: 12px 0 10px;
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+      .grid.two {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width: 760px) {
+        .grid.two {
+          grid-template-columns: 1fr;
+        }
+        .hero,
+        .panel {
+          padding: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <main class="card">
-      <h1>Empty but Live</h1>
-      <p>Starter page is up and reachable.</p>
+    <main>
+      <section class="hero">
+        <p class="meta">Research paper</p>
+        <h1>
+          Using a ranked refresh model to identify content that may deserve
+          review
+        </h1>
+        <p>
+          This paper evaluates whether a simple, transparent machine-learning
+          model can help a content team prioritize refresh review for pages that
+          still attract demand but may be drifting in usefulness. The work uses
+          a client-holdout validation design and focuses on honest,
+          decision-support language rather than automation claims.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Abstract</h2>
+        <p>
+          This study asks whether a pragmatic ranking model can help a content
+          team identify pages that deserve a human refresh review. The analysis
+          uses a public-safe, anonymized content refresh dataset with 30,000
+          rows and a client-holdout validation strategy to compare a transparent
+          baseline against a machine-learning model. The best-performing model,
+          a random forest, improves precision at 50 from 0.24 for the baseline
+          to 0.68 on the same split, which suggests the model is useful as a
+          prioritization aid rather than an automated decision engine. The
+          results are most relevant for pages that still attract visible demand
+          but show signs of decline risk, low CTR, or engagement drift. The
+          paper therefore frames the model as a reviewer aid for editorial
+          triage, with clear boundaries around campaign-sensitive,
+          policy-sensitive, or low-signal cases.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Introduction / Problem statement</h2>
+        <p>
+          Content teams often have more pages than time. The challenge is not
+          whether a page is bad, but which pages are worth a review first when
+          the content is still visible and still attracting some demand. A
+          simple rule based on recency or traffic alone is easy to explain, but
+          it misses pages that look healthy enough to keep running yet may be
+          losing usefulness.
+        </p>
+        <p>
+          This paper addresses that decision problem by testing a ranked model
+          that surfaces opportunities for refresh review. The goal is to support
+          a human reviewer, not replace one.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Data</h2>
+        <p>
+          The analysis uses the anonymized FlyRank internship dataset,
+          specifically the bundled content refresh release. The work uses 30,000
+          scored rows, with the target defined as an observed declining-label
+          outcome. The data includes visibility, freshness, position,
+          engagement, and content-shape features. The study excludes raw URLs,
+          client names, and other identifiers from the public-facing write-up
+          and keeps the analysis public-safe.
+        </p>
+        <p>
+          The target positive rate is approximately 54.2%, and the evaluation
+          uses a client-holdout split so the model is assessed on unseen clients
+          rather than on rows from the same client distribution.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Methodology</h2>
+        <p>
+          The paper compares a transparent baseline against a machine-learning
+          ranking approach on the same validation split. The baseline uses
+          simple rule-based logic, while the model uses a random forest trained
+          on a set of numeric and categorical features such as search volume,
+          competition, position, engagement, content age, and freshness
+          indicators. The label definition is the observed declining-label
+          target used by the repository workflow.
+        </p>
+        <p>
+          The evaluation focuses on ranking metrics rather than raw accuracy
+          because the use case is prioritization. Precision@50 is a central
+          metric because it reflects how often the top-ranked suggestions are
+          actually useful to a reviewer. The work also performs leakage checks
+          and keeps the analysis constrained to the same feature set and split
+          used throughout the project.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Results</h2>
+        <p>
+          The random forest model outperforms the baseline on the same
+          client-holdout split. The best model improves precision at 50 from
+          0.24 to 0.68, while also improving average precision and ROC AUC. That
+          does not mean the model is perfect; it means it is good enough to be
+          useful as a triage signal.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>ROC AUC</th>
+              <th>Avg precision</th>
+              <th>Precision@50</th>
+              <th>Recall</th>
+              <th>F1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Decision tree</td>
+              <td>0.742</td>
+              <td>0.575</td>
+              <td>0.660</td>
+              <td>0.716</td>
+              <td>0.634</td>
+            </tr>
+            <tr>
+              <td>Logistic regression</td>
+              <td>0.700</td>
+              <td>0.522</td>
+              <td>0.400</td>
+              <td>0.567</td>
+              <td>0.566</td>
+            </tr>
+            <tr>
+              <td>Random forest</td>
+              <td>0.747</td>
+              <td>0.610</td>
+              <td>0.680</td>
+              <td>0.741</td>
+              <td>0.638</td>
+            </tr>
+            <tr>
+              <td>Baseline rules</td>
+              <td>0.627</td>
+              <td>0.468</td>
+              <td>0.240</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="grid two">
+          <figure>
+            <img
+              src="charts/top_feature_importance.svg"
+              alt="Top feature importance chart"
+            />
+            <figcaption>
+              The strongest signals are visibility and freshness-related
+              features, including impression history, age, and average position.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="charts/trend_distribution.svg"
+              alt="Trend direction distribution chart"
+            />
+            <figcaption>
+              The distribution shows that many evaluated pages are trending
+              downward, which is why the ranking problem matters for content
+              review.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="grid two">
+          <figure>
+            <img
+              src="charts/top_reason_codes.svg"
+              alt="Top reason codes chart"
+            />
+            <figcaption>
+              The main reason codes point to visible demand with decline risk,
+              especially where CTR or engagement looks weak.
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="charts/confidence_mix.svg" alt="Confidence mix chart" />
+            <figcaption>
+              The confidence mix suggests the model is most reliable for a
+              subset of pages and should be used for prioritization rather than
+              full automation.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Limitations & honest framing</h2>
+        <p>
+          This work is directional and observational. It is not a causal study,
+          and it should not be treated as a production automation engine. The
+          model is most useful for surfacing pages that deserve editorial
+          review, especially when a page still has visible demand but is showing
+          signs of decline risk.
+        </p>
+        <p>
+          The analysis also depends on the quality and scope of the available
+          feature set. It cannot claim that a refresh will definitely improve
+          outcomes, and it should not override campaign timing, policy review,
+          or editorial judgment.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Ranked recommendations</h2>
+        <p>
+          The ranked queue is best used as a triage tool for content operations.
+          A practical sequence is: review the highest-ranked items first,
+          inspect business importance and current editorial context, and only
+          then decide whether a refresh should proceed.
+        </p>
+        <ul>
+          <li>
+            Review the highest-ranked pages first when demand is still visible
+            but decline risk is rising.
+          </li>
+          <li>
+            Prioritize refresh review for pages that show low CTR or weak
+            engagement alongside visible demand.
+          </li>
+          <li>
+            Keep campaign-critical, policy-sensitive, or low-signal pages out of
+            automated refresh flows.
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Reproducibility</h2>
+        <p>
+          The full analysis and notebooks live in the repository under the work
+          and scripts folders. The linked outputs include the model report, the
+          ranked queue, and the generated charts that support the paper. The
+          public-safe repository structure is intended to let a reader inspect
+          the methodology and rerun the workflow with the provided artifacts.
+        </p>
+        <ul>
+          <li>
+            Notebook:
+            <a
+              href="https://github.com/fksifat/flyrank-ml-internship/tree/main/work/notebooks"
+              >GitHub notebooks</a
+            >
+          </li>
+          <li>
+            Repository:
+            <a href="https://github.com/fksifat/flyrank-ml-internship"
+              >GitHub repository</a
+            >
+          </li>
+          <li>
+            Report outputs:
+            <a
+              href="https://github.com/fksifat/flyrank-ml-internship/tree/main/outputs"
+              >Generated outputs</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Acknowledgments & data credit</h2>
+        <p>
+          This work uses the FlyRank ML Internship dataset and is built on the
+          public-safe anonymized release provided for the internship workflow.
+          The project credits the data source at
+          <a href="https://flyrank.ai/">FlyRank</a>.
+        </p>
+      </section>
     </main>
   </body>
 </html>
