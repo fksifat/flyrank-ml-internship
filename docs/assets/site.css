@@ -260,6 +260,102 @@ h1 {
   line-height: 1.7;
 }
 
+.contact-form {
+  display: grid;
+  gap: 10px;
+  max-width: 640px;
+  margin-top: 16px;
+}
+
+.contact-form label {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .button {
+  width: fit-content;
+  margin-top: 4px;
+}
+
+.note {
+  padding: 16px 18px;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.85fr);
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.demo-controls,
+.demo-output {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.demo-controls {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.demo-controls label {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.demo-controls input[type='range'] {
+  width: 100%;
+}
+
+.value-pill,
+.score-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(18, 59, 75, 0.08);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.score-pill {
+  font-size: 2rem;
+  padding: 16px 20px;
+  margin-bottom: 8px;
+  background: rgba(214, 127, 69, 0.16);
+}
+
+.demo-output p {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 760px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .grid {
   display: grid;
   gap: 18px;

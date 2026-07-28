@@ -131,7 +131,57 @@
       </section>
 
       <section class="section panel" id="contact">
-        <h2>Public profile links</h2>
+        <h2>Live demo: refresh opportunity score</h2>
+        <p class="lede">
+          This is the one live feature on the site: a small interactive demo
+          that shows how a transparent scoring rule can highlight pages that may
+          deserve a refresh review.
+        </p>
+
+        <div class="demo-grid">
+          <div class="demo-controls">
+            <label for="demand">Demand</label>
+            <input id="demand" data-control type="range" min="0" max="100" value="72" />
+            <span class="value-pill" id="demand-value">72</span>
+
+            <label for="freshness">Freshness</label>
+            <input id="freshness" data-control type="range" min="0" max="100" value="40" />
+            <span class="value-pill" id="freshness-value">40</span>
+
+            <label for="engagement">Engagement decline</label>
+            <input id="engagement" data-control type="range" min="0" max="100" value="62" />
+            <span class="value-pill" id="engagement-value">62</span>
+
+            <label for="position">Search position</label>
+            <input id="position" data-control type="range" min="1" max="10" value="4" />
+            <span class="value-pill" id="position-value">4</span>
+          </div>
+
+          <div class="demo-output">
+            <div class="score-pill" id="score-pill">74</div>
+            <p id="score-text">
+              Medium priority: this page still shows demand, but it needs a
+              review soon.
+            </p>
+            <p id="score-detail">
+              The score blends demand, freshness, engagement decline, and search
+              position into a single transparent priority signal.
+            </p>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top: 18px">
+          <p>
+            <strong>Plain-words explainer:</strong> a backend is the server-side
+            part of a website that receives requests and forwards or stores
+            data. This demo does not need a backend because the browser reads
+            the values you choose, runs the scoring logic instantly, and shows
+            the result on the page. The data flow is simple: input values →
+            JavaScript score function → visible output.
+          </p>
+        </div>
+
+        <h3 style="margin-top: 24px">Public profile links</h3>
         <p class="lede">
           These are the links used for internship evaluation. Replace the three
           marked URLs below with your exact public profiles if needed.
@@ -202,5 +252,6 @@
         on the public host URL.
       </footer>
     </main>
+    <script src="assets/refresh-demo.js"></script>
   </body>
 </html>
