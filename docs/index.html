@@ -163,20 +163,19 @@
         <p>
           The paper uses the bundled FlyRank internship starter release in this
           repository: <code>data/raw/content_refresh_anonymized.csv</code>
-          (30,000 rows). Features are engineered from observed 30-day and
-          90-day aggregate behavior windows (for example impressions, clicks,
-          sessions, CTR, engagement, and position summaries), then written to
+          (30,000 rows). Features are engineered from observed 30-day and 90-day
+          aggregate behavior windows (for example impressions, clicks, sessions,
+          CTR, engagement, and position summaries), then written to
           <code>data/processed/refresh_feature_vector.csv</code>. The target is
           an observed declining label (<code>trend_direction == 'down'</code>),
           with a positive rate of about 54.2%.
         </p>
         <p>
           Exclusions for public safety and leakage control include private
-          identifiers and risky fields such as client/domain identifiers,
-          raw URLs, titles, and label-derived trend summary columns in the
-          training feature matrix. The evaluation uses client-holdout so the
-          model is tested on unseen client groups instead of row-level random
-          overlap.
+          identifiers and risky fields such as client/domain identifiers, raw
+          URLs, titles, and label-derived trend summary columns in the training
+          feature matrix. The evaluation uses client-holdout so the model is
+          tested on unseen client groups instead of row-level random overlap.
         </p>
       </section>
 
@@ -349,9 +348,7 @@
           public-safe repository structure is intended to let a reader inspect
           the methodology and rerun the workflow with the provided artifacts.
         </p>
-        <p>
-          Re-run from a fresh clone:
-        </p>
+        <p>Re-run from a fresh clone:</p>
         <pre><code>pip install -r requirements.txt
 python scripts/run_all.py</code></pre>
         <ul>
@@ -381,9 +378,9 @@ python scripts/run_all.py</code></pre>
       <section class="panel">
         <h2>Acknowledgments & data credit</h2>
         <p>
-          Built on the FlyRank ML Internship dataset.
-          The analysis uses the public-safe anonymized release provided for the
-          internship workflow, and credits the data source at
+          Built on the FlyRank ML Internship dataset. The analysis uses the
+          public-safe anonymized release provided for the internship workflow,
+          and credits the data source at
           <a href="https://flyrank.ai/">FlyRank</a>.
         </p>
       </section>
