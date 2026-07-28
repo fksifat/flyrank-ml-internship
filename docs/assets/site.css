@@ -322,7 +322,7 @@ h1 {
   color: var(--text);
 }
 
-.demo-controls input[type='range'] {
+.demo-controls input[type="range"] {
   width: 100%;
 }
 
