@@ -128,10 +128,12 @@
       <section class="panel">
         <h2>Abstract</h2>
         <p>
-          This study asks whether a pragmatic ranking model can help a content
-          team identify pages that deserve a human refresh review. The analysis
-          uses a public-safe, anonymized content refresh dataset with 30,000
-          rows and a client-holdout validation strategy to compare a transparent
+          This study addresses a real FlyRank content-operations problem: many
+          pages still attract some demand, but content teams cannot review every
+          page manually. The question is not whether a page is broken; it is
+          which pages deserve a human refresh review first. The analysis uses a
+          public-safe, anonymized content refresh dataset with 30,000 rows and
+          a client-holdout validation strategy to compare a transparent
           baseline against a machine-learning model. The best-performing model,
           a random forest, improves precision at 50 from 0.24 for the baseline
           to 0.68 on the same split, which suggests the model is useful as a
@@ -147,17 +149,17 @@
       <section class="panel">
         <h2>Introduction / Problem statement</h2>
         <p>
-          Content teams often have more pages than time. The challenge is not
-          whether a page is bad, but which pages are worth a review first when
-          the content is still visible and still attracting some demand. A
-          simple rule based on recency or traffic alone is easy to explain, but
-          it misses pages that look healthy enough to keep running yet may be
-          losing usefulness.
+          In the FlyRank content-refresh workflow, the practical question is
+          rarely whether a page is obviously wrong. It is which pages deserve a
+          human review first when they still show demand but may be drifting in
+          usefulness. A simple rule based on recency or traffic alone is easy
+          to explain, but it misses pages that appear healthy enough to keep
+          running while quietly losing value over time.
         </p>
         <p>
           This paper addresses that decision problem by testing a ranked model
-          that surfaces opportunities for refresh review. The goal is to support
-          a human reviewer, not replace one.
+          that surfaces refresh opportunities for editorial triage. The goal is
+          to support a human reviewer, not replace one.
         </p>
       </section>
 
