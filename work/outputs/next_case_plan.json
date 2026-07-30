@@ -1,0 +1,22 @@
+{
+  "next_case_title": "Weekly Refresh Queue Quality Check (Drift + Confidence Review)",
+  "where_it_goes": {
+    "draft": "work/portfolio_content_draft.md",
+    "published": "docs/index.html",
+    "evidence_files": [
+      "work/outputs/next_case_note.md",
+      "work/outputs/next_case_plan.json",
+      "work/outputs/next_case_reminder.ics"
+    ]
+  },
+  "three_beat_shape": [
+    "Problem: what broke or was at risk, and for whom.",
+    "What I did: workflow, model/process choices, and guardrails.",
+    "What came of it: measured result, limits, and next action."
+  ],
+  "claude_project_context_to_keep": [
+    "work/FL-03_prompt_iteration_log.md",
+    "work/prompt_ladder.md",
+    "work/agent/personal_agent_spec.md"
+  ]
+}
