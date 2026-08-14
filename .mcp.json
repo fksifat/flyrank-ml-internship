@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "flyrank-filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/farhankabirsifat/Desktop/flyrank-ml-internship"
+      ]
+    }
+  }
+}
