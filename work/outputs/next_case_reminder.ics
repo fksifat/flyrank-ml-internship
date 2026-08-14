@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//flyrank-ml-internship//NextCaseReminder//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:next-case-20260806T100000Z@flyrank-ml-internship
+DTSTAMP:20260730T161716Z
+DTSTART:20260806T100000Z
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Update portfolio with next case study - Weekly Refresh Queue Quality Check (Drift + Confidence Review)
+DESCRIPTION:Add the new case using Problem -> What I did -> What came of it, then publish docs/index.html.
+END:VEVENT
+END:VCALENDAR

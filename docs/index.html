@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refresh Opportunity Modeling for Content Refresh</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f2ea;
+        --panel: #fffdf9;
+        --text: #17212b;
+        --muted: #51606f;
+        --accent: #123b4b;
+        --accent-2: #d67f45;
+        --line: rgba(23, 33, 43, 0.12);
+      }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #f8f4eb 0%, var(--bg) 100%);
+        line-height: 1.65;
+      }
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 20px 64px;
+      }
+      .hero,
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 50px rgba(23, 33, 43, 0.08);
+      }
+      .hero {
+        padding: 32px;
+        margin-bottom: 24px;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.15;
+        margin-top: 0;
+      }
+      h1 {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 1.25em;
+      }
+      p,
+      li {
+        color: var(--muted);
+      }
+      .meta {
+        color: var(--accent-2);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .panel {
+        padding: 24px 28px;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0 20px;
+        font-size: 0.95rem;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+      }
+      th {
+        background: rgba(18, 59, 75, 0.06);
+      }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        margin: 12px 0 10px;
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+      .grid.two {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width: 760px) {
+        .grid.two {
+          grid-template-columns: 1fr;
+        }
+        .hero,
+        .panel {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <p class="meta">Research paper</p>
+        <h1>
+          Using a ranked refresh model to identify content that may deserve
+          review
+        </h1>
+        <p>
+          This paper evaluates whether a simple, transparent machine-learning
+          model can help a content team prioritize refresh review for pages that
+          still attract demand but may be drifting in usefulness. The work uses
+          a client-holdout validation design and focuses on honest,
+          decision-support language rather than automation claims.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Abstract</h2>
+        <p>
+          Content teams cannot manually review every page, so this study asks
+          which pages should be prioritized first for human refresh review.
+          Using the FlyRank anonymized internship release (30,000 rows), the
+          analysis compares a transparent rule baseline to supervised models on
+          the same client-holdout split. The strongest model (random forest)
+          improves Precision@50 from 0.24 (baseline) to 0.68 while also
+          increasing ROC AUC and average precision. This result is directional
+          and decision-support oriented, not a claim of causal refresh impact or
+          Google algorithm prediction. The output is a ranked action queue with
+          reason codes so editors can triage review-first opportunities faster.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Introduction / Problem statement</h2>
+        <p>
+          In the FlyRank content-refresh workflow, the practical question is
+          rarely whether a page is obviously wrong. It is which pages deserve a
+          human review first when they still show demand but may be drifting in
+          usefulness. A simple rule based on recency or traffic alone is easy to
+          explain, but it misses pages that appear healthy enough to keep
+          running while quietly losing value over time.
+        </p>
+        <p>
+          This paper addresses that decision problem by testing a ranked model
+          that surfaces refresh opportunities for editorial triage. The goal is
+          to support a human reviewer, not replace one.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Data</h2>
+        <p>
+          The paper uses the bundled FlyRank internship starter release in this
+          repository: <code>data/raw/content_refresh_anonymized.csv</code>
+          (30,000 rows). Features are engineered from observed 30-day and 90-day
+          aggregate behavior windows (for example impressions, clicks, sessions,
+          CTR, engagement, and position summaries), then written to
+          <code>data/processed/refresh_feature_vector.csv</code>. The target is
+          an observed declining label (<code>trend_direction == 'down'</code>),
+          with a positive rate of about 54.2%.
+        </p>
+        <p>
+          Exclusions for public safety and leakage control include private
+          identifiers and risky fields such as client/domain identifiers, raw
+          URLs, titles, and label-derived trend summary columns in the training
+          feature matrix. The evaluation uses client-holdout so the model is
+          tested on unseen client groups instead of row-level random overlap.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Methodology</h2>
+        <p>
+          The workflow follows: feature preparation, baseline scoring, model
+          training, evaluation, and ranked recommendation export. The baseline
+          is a transparent hand-built score so lift can be measured honestly on
+          the same holdout frame. Models include logistic regression, decision
+          tree, and random forest using numeric and categorical visibility,
+          freshness, position, and engagement signals.
+        </p>
+        <p>
+          Validation is client-group holdout (group-aware split), and the
+          primary metric is Precision@50 because the product output is a ranked
+          queue, not a binary approval gate. Secondary metrics include ROC AUC,
+          average precision, recall, and F1. Leakage checks are applied before
+          training to avoid target proxies and post-outcome fields.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Results</h2>
+        <p>
+          The random forest model outperforms the baseline on the same
+          client-holdout split. The best model improves precision at 50 from
+          0.24 to 0.68, while also improving average precision and ROC AUC. That
+          does not mean the model is perfect; it means it is good enough to be
+          useful as a triage signal.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>ROC AUC</th>
+              <th>Avg precision</th>
+              <th>Precision@50</th>
+              <th>Recall</th>
+              <th>F1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Decision tree</td>
+              <td>0.742</td>
+              <td>0.575</td>
+              <td>0.660</td>
+              <td>0.716</td>
+              <td>0.634</td>
+            </tr>
+            <tr>
+              <td>Logistic regression</td>
+              <td>0.700</td>
+              <td>0.522</td>
+              <td>0.400</td>
+              <td>0.567</td>
+              <td>0.566</td>
+            </tr>
+            <tr>
+              <td>Random forest</td>
+              <td>0.747</td>
+              <td>0.610</td>
+              <td>0.680</td>
+              <td>0.741</td>
+              <td>0.638</td>
+            </tr>
+            <tr>
+              <td>Baseline rules</td>
+              <td>0.627</td>
+              <td>0.468</td>
+              <td>0.240</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="grid two">
+          <figure>
+            <img
+              src="charts/top_feature_importance.svg"
+              alt="Top feature importance chart"
+            />
+            <figcaption>
+              The strongest signals are visibility and freshness-related
+              features, including impression history, age, and average position.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="charts/trend_distribution.svg"
+              alt="Trend direction distribution chart"
+            />
+            <figcaption>
+              The distribution shows that many evaluated pages are trending
+              downward, which is why the ranking problem matters for content
+              review.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="grid two">
+          <figure>
+            <img
+              src="charts/top_reason_codes.svg"
+              alt="Top reason codes chart"
+            />
+            <figcaption>
+              The main reason codes point to visible demand with decline risk,
+              especially where CTR or engagement looks weak.
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="charts/confidence_mix.svg" alt="Confidence mix chart" />
+            <figcaption>
+              The confidence mix suggests the model is most reliable for a
+              subset of pages and should be used for prioritization rather than
+              full automation.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Limitations & honest framing</h2>
+        <p>
+          This work is directional and observational. It is not a causal study,
+          and it should not be treated as a production automation engine. The
+          model is most useful for surfacing pages that deserve editorial
+          review, especially when a page still has visible demand but is showing
+          signs of decline risk.
+        </p>
+        <p>
+          The analysis also depends on the quality and scope of the available
+          feature set. It cannot claim that a refresh will definitely improve
+          outcomes, and it should not override campaign timing, policy review,
+          or editorial judgment.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Ranked recommendations</h2>
+        <p>
+          The ranked queue is best used as a triage tool for content operations.
+          A practical sequence is: review the highest-ranked items first,
+          inspect business importance and current editorial context, and only
+          then decide whether a refresh should proceed.
+        </p>
+        <ul>
+          <li>
+            Review the highest-ranked pages first when demand is still visible
+            but decline risk is rising.
+          </li>
+          <li>
+            Prioritize refresh review for pages that show low CTR or weak
+            engagement alongside visible demand.
+          </li>
+          <li>
+            Keep campaign-critical, policy-sensitive, or low-signal pages out of
+            automated refresh flows.
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Reproducibility</h2>
+        <p>
+          The full analysis and notebooks live in the repository under the work
+          and scripts folders. The linked outputs include the model report, the
+          ranked queue, and the generated charts that support the paper. The
+          public-safe repository structure is intended to let a reader inspect
+          the methodology and rerun the workflow with the provided artifacts.
+        </p>
+        <p>Re-run from a fresh clone:</p>
+        <pre><code>pip install -r requirements.txt
+python scripts/run_all.py</code></pre>
+        <ul>
+          <li>
+            Notebook:
+            <a
+              href="https://github.com/fksifat/flyrank-ml-internship/tree/main/work/notebooks"
+              >GitHub notebooks</a
+            >
+          </li>
+          <li>
+            Repository:
+            <a href="https://github.com/fksifat/flyrank-ml-internship"
+              >GitHub repository</a
+            >
+          </li>
+          <li>
+            Report outputs:
+            <a
+              href="https://github.com/fksifat/flyrank-ml-internship/tree/main/outputs"
+              >Generated outputs</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Acknowledgments & data credit</h2>
+        <p>
+          Built on the FlyRank ML Internship dataset. The analysis uses the
+          public-safe anonymized release provided for the internship workflow,
+          and credits the data source at
+          <a href="https://flyrank.ai/">FlyRank</a>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

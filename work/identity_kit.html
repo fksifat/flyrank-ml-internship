@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Identity Kit — Farhan Kabir Sifat</title>
+    <link rel="icon" href="images/identity_mark.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8f7f3;
+        --text: #111111;
+        --primary: #123b4b;
+        --accent: #a4b8ae;
+        --muted: #5d6770;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+      }
+
+      .card {
+        background: #ffffff;
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 16px 40px rgba(17, 17, 17, 0.06);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand img {
+        width: 56px;
+        height: 56px;
+      }
+
+      h1,
+      h2 {
+        font-family: "Space Grotesk", Arial, sans-serif;
+        margin: 0;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.77rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 8px;
+      }
+
+      .section {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(17, 17, 17, 0.1);
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .swatch {
+        border-radius: 16px;
+        padding: 16px;
+        min-height: 112px;
+        border: 1px solid rgba(17, 17, 17, 0.08);
+      }
+
+      .swatch strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .font-card {
+        background: #fbfaf7;
+        border-radius: 16px;
+        padding: 18px;
+        border: 1px solid rgba(17, 17, 17, 0.08);
+      }
+
+      .font-card .headline {
+        font-family: "Space Grotesk", Arial, sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+
+      .font-card .body {
+        font-family: "Inter", Arial, sans-serif;
+        color: var(--muted);
+      }
+
+      .style-note {
+        background: linear-gradient(
+          135deg,
+          rgba(18, 59, 75, 0.08),
+          rgba(164, 184, 174, 0.16)
+        );
+        border-radius: 16px;
+        padding: 18px 20px;
+        border: 1px solid rgba(18, 59, 75, 0.12);
+      }
+
+      code {
+        font-family: Consolas, monospace;
+        color: var(--primary);
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          padding: 24px;
+        }
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="card">
+        <div class="topbar">
+          <div class="brand">
+            <img
+              src="images/identity_mark.svg"
+              alt="Monogram logo for Farhan Kabir Sifat"
+            />
+            <div>
+              <div class="eyebrow">Identity kit</div>
+              <h1>Farhan Kabir Sifat</h1>
+            </div>
+          </div>
+          <p style="margin: 0; color: var(--muted)">
+            Clear, calm, and evidence-led.
+          </p>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">Fonts</div>
+          <div class="grid">
+            <div class="font-card">
+              <div class="headline">Space Grotesk</div>
+              <div class="body">
+                Heading font for names, section titles, and case-study framing.
+              </div>
+            </div>
+            <div class="font-card">
+              <div class="headline" style="font-size: 1.2rem; font-weight: 500">
+                Inter
+              </div>
+              <div class="body">
+                Body font for copy, captions, and supporting details.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">Palette</div>
+          <div class="grid">
+            <div class="swatch" style="background: #123b4b; color: #f8f7f3">
+              <strong>Primary</strong>
+              <span>#123B4B</span>
+            </div>
+            <div class="swatch" style="background: #f8f7f3; color: #111111">
+              <strong>Background</strong>
+              <span>#F8F7F3</span>
+            </div>
+            <div class="swatch" style="background: #111111; color: #f8f7f3">
+              <strong>Text</strong>
+              <span>#111111</span>
+            </div>
+            <div class="swatch" style="background: #a4b8ae; color: #111111">
+              <strong>Accent</strong>
+              <span>#A4B8AE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">Logo / favicon</div>
+          <p>
+            The mark is a simple monogram built from the initials
+            <strong>FS</strong>, kept minimal so the work remains the focal
+            point.
+          </p>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">Two-line style note</div>
+          <div class="style-note">
+            <p>
+              <strong>Fonts:</strong> Space Grotesk for headings, Inter for
+              body; <strong>Palette:</strong> <code>#123B4B</code>,
+              <code>#F8F7F3</code>, <code>#111111</code>, <code>#A4B8AE</code>.
+            </p>
+            <p>
+              The mood is calm, precise, and evidence-led, so the portfolio
+              feels thoughtful rather than flashy.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
